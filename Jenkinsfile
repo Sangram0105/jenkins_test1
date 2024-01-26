@@ -10,15 +10,7 @@ stages{
             sh 'java JavaProj'
         }
     }
-    stage("test"){
-        steps{
-            sh 'java --version'
 
-            sh 'mvn --version'
-
-           
-        }
-    }
 }
 
 }
