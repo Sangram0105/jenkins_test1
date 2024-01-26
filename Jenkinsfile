@@ -12,21 +12,21 @@ pipeline {
         stage('Build') {
             steps {
                 // This step compiles your Java program
-                sh 'javac JavaProj.java'
+                bat 'javac JavaProj.java'
             }
         }
 
         stage('Run') {
             steps {
                 // This step runs your Java program
-                sh 'java JavaProj'
+                bat 'java JavaProj'
             }
         }
 
         stage('Cleanup') {
             steps {
                 // Optionally, you can clean up any temporary files or artifacts
-                sh 'rm -rf *.class'
+                bat 'del *.class'
             }
         }
     }
