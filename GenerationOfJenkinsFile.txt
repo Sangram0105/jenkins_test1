@@ -1,0 +1,10 @@
+There are different stages of the Jenkinsfile which has to be written in the pipeline.
+
+
+1. All the stages come under the pipeline block.
+2. After that, the variables used in different stages are defined.
+3. The tools used in the pipeline, such as Docker, Node, etc., are specified.
+4. Then the stages begin. The number of stages depends on the requirements of the process.
+5. When there is a need for code debugging, a test and debug stage is added, utilizing different tools for code debugging, as needed.
+6. If there are many steps involved in one stage, they are written in the steps block within that particular stage.
+7. After the completion of all stages, the success and failure blocks are written, containing messages for success and failure.
