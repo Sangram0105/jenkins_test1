@@ -2,7 +2,7 @@ pipeline {
     agent any
 
        environment {
-        DOCKER_IMAGE = 'sdsankpal7812/javaproj:latest'
+        DOCKER_IMAGE = 'sdsankpal7812/javaproj'
     }
     stages {
         stage('Checkout') {
