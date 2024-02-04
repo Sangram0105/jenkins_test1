@@ -1,6 +1,9 @@
 pipeline {
     agent any
 
+       environment {
+        DOCKER_IMAGE = 'sdsankpal7812/javaproj:latest'
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -29,7 +32,33 @@ pipeline {
                 bat 'del *.class'
             }
         }
-    }
+
+     
+
+   
+        stage('Build docker image ') {
+            steps {
+                script {
+                    // Build the Docker image
+                    bat 'docker build -t $DOCKER_IMAGE -f Dockerfile .'
+                }
+            }
+        }
+
+        stage('Push') {
+            steps {
+                script {
+                    // Log in to Docker Hub
+                    withCredentials([usernamePassword(credentialsId: 'Sangram-DockerHub1', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
+                        bat "docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD"
+                    }
+
+                    // Push the Docker image to Docker Hub
+                    bat "docker push $DOCKER_IMAGE"
+                }
+            }
+        }
+    }   
 
     post {
         success {
@@ -40,4 +69,5 @@ pipeline {
             echo 'There was an error during the execution of the Java program.'
         }
     }
+
 }
