@@ -1,9 +1,7 @@
 pipeline {
     agent any
 
-       environment {
-        DOCKER_IMAGE = 'sdsankpal7812/javaproj'
-    }
+     
     stages {
         stage('Checkout') {
             steps {
@@ -36,14 +34,14 @@ pipeline {
      
 
    
-        stage('Build docker image ') {
-            steps {
-                script {
-                    // Build the Docker image
-                    bat 'docker build -t ${env.DOCKER_IMAGE} -f Dockerfile .'
-                }
-            }
-        }
+         stage("Build Docker image"){
+            
+           steps{
+                script{
+                bat 'docker build -t sdsankpal7812/javaproj .'
+             }
+           }
+        } 
 
         stage('Push') {
             steps {
@@ -54,7 +52,7 @@ pipeline {
                     }
 
                     // Push the Docker image to Docker Hub
-                    bat "docker push ${env.DOCKER_IMAGE}"
+                    bat 'docker push sdsankpal7812/javaproj'
                 }
             }
         }
