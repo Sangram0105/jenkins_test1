@@ -54,7 +54,7 @@ pipeline {
                     }
 
                     // Push the Docker image to Docker Hub
-                    bat "docker push $DOCKER_IMAGE"
+                    bat "docker push ${env.DOCKER_IMAGE}"
                 }
             }
         }
