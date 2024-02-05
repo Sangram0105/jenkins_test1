@@ -40,7 +40,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image
-                    bat 'docker build -t $DOCKER_IMAGE -f Dockerfile .'
+                    bat 'docker build -t ${env.DOCKER_IMAGE} -f Dockerfile .'
                 }
             }
         }
